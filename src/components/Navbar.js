@@ -1,12 +1,13 @@
 import "./Navbar.css"
 import { Link } from "react-router-dom";
+import Legion from "../assets/Legion.svg"
 
 export default function Navbar() {
   return (
     <div className="navbar">
         <ul>
             <li className="logo">
-                <img src="" alt="" />
+                <img src={Legion} alt="Legion AJJ" />
                 <span>Journal AJJ</span></li>
             <li> <Link to="/login">Login</Link></li>
             <li><Link to="/signup">Signup</Link></li>
