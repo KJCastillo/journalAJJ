@@ -1,17 +1,24 @@
-import "./JournalList.css"
+import "./JournalList.css";
 
-export function JournalList({journals}) {
+export function JournalList({ journals }) {
   const handleClick = async (id) => {
-    console.log(id)
-  }
+    console.log(id);
+  };
 
   return (
     <div className="journal-list">
       <ul>
         {journals.map((journal) => (
-          <li key={journal.id} onClick={() => handleClick(journal.id)}>{journal.title}</li>
+          <>
+            <span key={journal.id}>
+              <h2 key={journal.id} onClick={() => handleClick(journal.id)}>{journal.title}</h2>
+              <p>{journal.move}</p>
+              <h4>{journal.type}</h4>
+              <p>{journal.coach}</p>
+            </span>
+          </>
         ))}
       </ul>
     </div>
-  )
+  );
 }
