@@ -2,7 +2,8 @@
 :root {
   --heading-color: #444;
   --text-color: #999;
-  --primary-color: #000C66;
+  --primary-color: #0A1F41;
+  --secondary-color: #ED193E;
   --highlight-color: #c62121;
   --bg-color: #f4f4f4;
 }
@@ -38,14 +39,14 @@ ul {
   background: #fff;
   padding: 8px 12px;
   border-radius: 4px;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   cursor: pointer;
   font-size: 1em;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--secondary-color);
 }
 .btn:hover {
   color: #fff;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 
 /* forms */

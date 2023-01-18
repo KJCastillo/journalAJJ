@@ -5,11 +5,13 @@ import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
 import Dashboard from "./dashboard/Dashboard";
 import "./App.css";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <Sidebar />
         <div className="container">
           <Navbar />
           <Routes>
