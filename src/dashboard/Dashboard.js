@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import "./Dashboard.css"
 import { JournalList } from '../pages/journals/JournalList'
-import { JournalForm } from '../pages/journals/JournalForm'
+// import { JournalForm } from '../pages/journals/JournalForm'
 import { db } from "../firebase/config"
 import { collection, getDocs } from "firebase/firestore"
 
@@ -24,7 +24,7 @@ export default function Dashboard() {
   return (
     <div>
         {journal && <JournalList journals={journal}/>}
-        <JournalForm />
+        {/* <JournalForm /> */}
     </div>
   )
 }
