@@ -8,9 +8,9 @@ export const useSignup = () => {
   const [isPending, setIsPending] = useState(false)
   const { dispatch } = useAuthContext()
 
-  const signup = (email, password) => {
+  const signup = async (email, password, displayName) => {
     setError(null);
-
+    
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
         dispatch({ type: 'LOGIN', payload: res.user })
@@ -19,6 +19,7 @@ export const useSignup = () => {
         setError(err.message);
         setIsPending(false)
       });
+
   };
 
   return { error, isPending, signup };
