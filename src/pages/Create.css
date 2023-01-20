@@ -1,6 +1,9 @@
 .create-form {
-    max-width: 600px;
-  }
+  max-width: 600px;
+  margin: 10px auto;
+  /* 10 changed from 60 */
+  padding: 40px;
+}
 
 .proj-btn {
   margin-bottom: 15px;
