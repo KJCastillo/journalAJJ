@@ -1,25 +1,10 @@
-import { useEffect, useState } from "react"
 import "./Dashboard.css"
 import { JournalList } from '../pages/journals/JournalList'
 // import { JournalForm } from '../pages/journals/JournalForm'
-import { db } from "../firebase/config"
-import { collection, getDocs } from "firebase/firestore"
+import { useCollection } from "../hooks/useCollection"
 
 export default function Dashboard() {
-    const [journal, setJournal] = useState(null)
-
-    useEffect(() => {
-      const ref = collection(db, 'moves')
-
-      getDocs(ref)
-      .then((snapshot) => {
-        let results = []
-        snapshot.docs.forEach(doc => {
-          results.push({id: doc.id, ...doc.data()})
-        })
-        setJournal(results)
-      })
-    }, [])
+  const { document: journal} = useCollection('moves')  
 
   return (
     <div>

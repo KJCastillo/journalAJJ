@@ -1,24 +1,24 @@
 import "./JournalList.css";
 
 export function JournalList({ journals }) {
-  const handleClick = async (id) => {
-    console.log(id);
-  };
-
   return (
     <div className="journal-list">
-      <ul>
-        {journals.map((journal) => (
-          <>
-            <span key={journal.id}>
-              <h2 key={journal.id} onClick={() => handleClick(journal.id)}>{journal.title}</h2>
-              <p>{journal.move}</p>
-              <h4>{journal.type}</h4>
-              <p>{journal.coach}</p>
-            </span>
-          </>
+      {journals.length === 0 && <p>No projects available</p>}
+      {journals.map(journal => (
+                <>
+                <h4>{journal.title}</h4>
+                <p>{journal.coach}</p>
+                <div className="assigned-to">
+                {/* <ul>
+                    {journal.map(user => (
+                        <li key={user.displayName}>
+                            <p>test</p>
+                        </li>
+                    ))}
+                    </ul> */}
+                </div>
+                </>
         ))}
-      </ul>
     </div>
   );
 }
