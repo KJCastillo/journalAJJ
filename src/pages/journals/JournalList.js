@@ -7,7 +7,9 @@ export function JournalList({ journals }) {
       {journals.map(journal => (
                 <>
                 <h4>{journal.title}</h4>
+                <p>{journal.move}</p>
                 <p>{journal.coach}</p>
+                <p>{journal.type}</p>
                 <div className="assigned-to">
                 {/* <ul>
                     {journal.map(user => (
