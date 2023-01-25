@@ -1,6 +1,7 @@
 import "./Create.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 import Select from "react-select";
 
 const types = [
@@ -38,6 +39,7 @@ export default function Create() {
   const [position, setPosition] = useState("");
   const [style, setStyle] = useState("");
   const [formError, setFormError] = useState(null)
+  const { user } = useAuthContext()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +58,22 @@ export default function Create() {
       return;
     }
 
-    console.log(title, move, coach, type.value, position.value, style.value);
+    const createdBy = {
+      displayName: user.displayName,
+      id: user.id
+    }
+
+    const project = {
+      title, 
+      move, 
+      coach, 
+      type: type.value, 
+      position: position.value, 
+      style: style.value,
+      createdBy
+    }
+
+    console.log(project);
   };
 
   return (
