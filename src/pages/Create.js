@@ -2,8 +2,8 @@ import "./Create.css";
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { db } from "../firebase/config";
-import { collection, addDoc } from "firebase/firestore";
+// import { db } from "../firebase/config";
+// import { collection, addDoc } from "firebase/firestore";
 import Select from "react-select";
 
 const types = [
@@ -65,7 +65,7 @@ export default function Create() {
 
     const createdBy = {
       displayName: user.displayName,
-      id: user.id
+      id: user.uid
     }
 
     const project = {
@@ -77,10 +77,10 @@ export default function Create() {
       style: style.value,
       createdBy
     }
+    console.log(project)
+    // const ref = collection(db, 'moves')
 
-    const ref = collection(db, 'moves')
-
-    await addDoc(ref, {project})
+    // await addDoc(ref, {project})
   };
 
   return (
