@@ -20,7 +20,7 @@ export const useLogin = () => {
       const res = await signInWithEmailAndPassword(auth, email, password)
 
       // update online status
-     // await projectFirestore.collection("users").doc(res.user.uid).update({ online: true })
+     //await projectFirestore.collection("users").doc(res.user.uid).update({ online: true })
 
 
       // dispatch login action
