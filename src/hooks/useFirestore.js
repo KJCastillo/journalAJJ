@@ -1,6 +1,4 @@
-import { useReducer, useState, useEffect } from "react";
-import { db, timestamp } from "../firebase/config";
-import { collection, addDoc } from "firebase/firestore";
+import { useReducer } from "react";
 
 let initialState = {
   document: null,
@@ -8,6 +6,7 @@ let initialState = {
   error: null,
   success: null,
 };
+//outside of hook, no need to change after it's made
 
 const firestoreReducer = (state, action) => {
   switch (action.type) {
@@ -33,41 +32,10 @@ const firestoreReducer = (state, action) => {
 };
 
 export const useFirestore = (collection) => {
-  const [response, dispatch] = useReducer(firestoreReducer, initialState);
-  const [isCancelled, setIsCancelled] = useState(false);
-
-  //collection ref
-  //const ref = db(collection);
-
-  // only dispatch if not cancelled
-//   const dispatchIfNotCancelled = (action) => {
-//     if (!isCancelled) {
-//       dispatch(action);
-//     }
-//   };
-
-  //add doc
-//   const addDocument = async (doc) => {
-//     dispatch({ type: "IS_PENDING" });
-
-//     try {
-//       const createdAt = timestamp.fromDate(new Date());
-//       const addedDocument = await ref.addDoc({ ...doc, createdAt });
-//       dispatchIfNotCancelled({
-//         type: "ADDED_DOCUMENT",
-//         payload: addedDocument,
-//       });
-//     } catch (err) {
-//       dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
-//     }
-//   };
-
-  //delete doc
-  const deleteDocument = async (id) => {};
-
-  useEffect(() => {
-    return () => setIsCancelled(true);
-  }, []);
-
-  return { deleteDocument, response };
+  const [response] = useReducer(firestoreReducer, initialState);
+  //response repesents state that we get back from firestore
+  //on that object we can get an error or success properties saying if the request works or not
+  return { response };
+  
+  // IS THIS HOOK EVEN NECESSARY??? FOLLOW UP!!
 };

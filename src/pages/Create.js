@@ -47,7 +47,6 @@ export default function Create() {
   const [style, setStyle] = useState("");
   const [formError, setFormError] = useState(null);
   const { user } = useAuthContext();
-  //const {newJournal, setNewJournal} = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
