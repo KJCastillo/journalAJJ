@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useFirestore } from "../hooks/useFirestore";
 import { db } from "../firebase/config";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import Select from "react-select";
 
 const types = [
@@ -69,6 +69,7 @@ export default function Create() {
     const createdBy = {
       displayName: user.displayName,
       id: user.uid,
+      createdAt : serverTimestamp()
     };
 
     const moves = {
