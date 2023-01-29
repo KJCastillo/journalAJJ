@@ -1,9 +1,10 @@
 import "./Create.css";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-// import { db } from "../firebase/config";
-// import { collection, addDoc } from "firebase/firestore";
+import { useFirestore } from "../hooks/useFirestore";
+import { db } from "../firebase/config";
+import { collection, addDoc } from "firebase/firestore";
 import Select from "react-select";
 
 const types = [
@@ -36,19 +37,21 @@ const styles = [
 ];
 
 export default function Create() {
+  const navigate = useNavigate();
+  const { response } = useFirestore('moves');
   const [title, setTitle] = useState("");
   const [move, setMove] = useState("");
   const [coach, setCoach] = useState("");
   const [type, setType] = useState("");
   const [position, setPosition] = useState("");
   const [style, setStyle] = useState("");
-  const [formError, setFormError] = useState(null)
-  const { user } = useAuthContext()
+  const [formError, setFormError] = useState(null);
+  const { user } = useAuthContext();
   //const {newJournal, setNewJournal} = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormError(null)
+    setFormError(null);
 
     if (!position) {
       setFormError("Please select a position");
@@ -65,81 +68,85 @@ export default function Create() {
 
     const createdBy = {
       displayName: user.displayName,
-      id: user.uid
-    }
+      id: user.uid,
+    };
 
-    const project = {
-      title, 
-      move, 
-      coach, 
-      type: type.value, 
-      position: position.value, 
+    const moves = {
+      title,
+      move,
+      coach,
+      type: type.value,
+      position: position.value,
       style: style.value,
-      createdBy
-    }
-    console.log(project)
-    // const ref = collection(db, 'moves')
+      createdBy,
+    };
 
-    // await addDoc(ref, {project})
+    try {
+      const docRef = await addDoc(collection(db, "moves"), {
+        moves
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+
+
+    if (!response.error) {
+      navigate("/");
+    }
   };
 
   return (
     <div className="body">
-    <div className="create-form">
-      <h2 className="page-title">Create New Entry</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>Title:</span>
-          <input
-            required
-            type="text"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-          />
-        </label>
-        <label>
-          <span>Describe Move:</span>
-          <textarea
-            required
-            type="text"
-            onChange={(e) => setMove(e.target.value)}
-            value={move}
-          ></textarea>
-        </label>
-        <label>
-          <span>Taught by Coach:</span>
-          <input
-            required
-            type="text"
-            onChange={(e) => setCoach(e.target.value)}
-            value={coach}
-          />
-        </label>
-        <label>
-          <span>Move Position:</span>
-          <Select 
-          onChange={(option) => setPosition(option)}
-          options={positions}
-          />
-        </label>
-        <label>
-          <span>Move Type:</span>
-          <Select 
-          onChange={(option) => setType(option)}
-          options={types}
-          />
-        </label>
-        <label>
-          <span>Move Style:</span>
-          <Select 
-          onChange={(option) => setStyle(option)}
-          options={styles}
-          />
-        </label>
-        <button className="btn proj-btn">Add Entry</button>
-        {formError && <p className="error error-create">{formError}</p>}
-      </form>
-    </div>
+      <div className="create-form">
+        <h2 className="page-title">Create New Entry</h2>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <span>Title:</span>
+            <input
+              required
+              type="text"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+            />
+          </label>
+          <label>
+            <span>Describe Move:</span>
+            <textarea
+              required
+              type="text"
+              onChange={(e) => setMove(e.target.value)}
+              value={move}
+            ></textarea>
+          </label>
+          <label>
+            <span>Taught by Coach:</span>
+            <input
+              required
+              type="text"
+              onChange={(e) => setCoach(e.target.value)}
+              value={coach}
+            />
+          </label>
+          <label>
+            <span>Move Position:</span>
+            <Select
+              onChange={(option) => setPosition(option)}
+              options={positions}
+            />
+          </label>
+          <label>
+            <span>Move Type:</span>
+            <Select onChange={(option) => setType(option)} options={types} />
+          </label>
+          <label>
+            <span>Move Style:</span>
+            <Select onChange={(option) => setStyle(option)} options={styles} />
+          </label>
+          <button className="btn proj-btn">Add Entry</button>
+          {formError && <p className="error error-create">{formError}</p>}
+        </form>
+      </div>
     </div>
   );
 }

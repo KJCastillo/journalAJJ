@@ -37,30 +37,30 @@ export const useFirestore = (collection) => {
   const [isCancelled, setIsCancelled] = useState(false);
 
   //collection ref
-  const ref = db.collection(collection);
+  //const ref = db(collection);
 
   // only dispatch if not cancelled
-  const dispatchIfNotCancelled = (action) => {
-    if (!isCancelled) {
-      dispatch(action);
-    }
-  };
+//   const dispatchIfNotCancelled = (action) => {
+//     if (!isCancelled) {
+//       dispatch(action);
+//     }
+//   };
 
   //add doc
-  const addDocument = async (doc) => {
-    dispatch({ type: "IS_PENDING" });
+//   const addDocument = async (doc) => {
+//     dispatch({ type: "IS_PENDING" });
 
-    try {
-      const createdAt = timestamp.fromDate(new Date());
-      const addedDocument = await ref.addDoc({ ...doc, createdAt });
-      dispatchIfNotCancelled({
-        type: "ADDED_DOCUMENT",
-        payload: addedDocument,
-      });
-    } catch (err) {
-      dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
-    }
-  };
+//     try {
+//       const createdAt = timestamp.fromDate(new Date());
+//       const addedDocument = await ref.addDoc({ ...doc, createdAt });
+//       dispatchIfNotCancelled({
+//         type: "ADDED_DOCUMENT",
+//         payload: addedDocument,
+//       });
+//     } catch (err) {
+//       dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
+//     }
+//   };
 
   //delete doc
   const deleteDocument = async (id) => {};
@@ -69,5 +69,5 @@ export const useFirestore = (collection) => {
     return () => setIsCancelled(true);
   }, []);
 
-  return { addDocument, deleteDocument, response };
+  return { deleteDocument, response };
 };
