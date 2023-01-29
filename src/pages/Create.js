@@ -38,9 +38,9 @@ const styles = [
 
 export default function Create() {
   const navigate = useNavigate();
-  const { response } = useFirestore('moves');
+  const { response } = useFirestore("moves");
   const [title, setTitle] = useState("");
-  const [move, setMove] = useState("");
+  const [technique, setTechnique] = useState("");
   const [coach, setCoach] = useState("");
   const [type, setType] = useState("");
   const [position, setPosition] = useState("");
@@ -68,28 +68,18 @@ export default function Create() {
     const createdBy = {
       displayName: user.displayName,
       id: user.uid,
-      createdAt : serverTimestamp()
+      createdAt: serverTimestamp(),
     };
 
-    const moves = {
+    await addDoc(collection(db, "technique"), {
       title,
-      move,
+      technique,
       coach,
       type: type.value,
       position: position.value,
       style: style.value,
       createdBy,
-    };
-
-    try {
-      const docRef = await addDoc(collection(db, "moves"), {
-        moves
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-
+    });
 
     if (!response.error) {
       navigate("/");
@@ -111,12 +101,12 @@ export default function Create() {
             />
           </label>
           <label>
-            <span>Describe Move:</span>
+            <span>Describe Technique:</span>
             <textarea
               required
               type="text"
-              onChange={(e) => setMove(e.target.value)}
-              value={move}
+              onChange={(e) => setTechnique(e.target.value)}
+              value={technique}
             ></textarea>
           </label>
           <label>
