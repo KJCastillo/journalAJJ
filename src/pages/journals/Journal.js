@@ -1,6 +1,6 @@
 // import { useParams } from "react-router-dom";
 // import { useDocument } from "../../hooks/useDocument";
-// import "./Project.css";
+import "./Journal.css";
 // import ProjectComments from "./ProjectComments";
 // import ProjectSummary from "./ProjectSummary";
 
