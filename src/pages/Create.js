@@ -8,32 +8,34 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import Select from "react-select";
 
 const types = [
-  { value: "sweep", label: "Sweep" },
-  { value: "pass", label: "Pass" },
-  { value: "choke", label: "Choke" },
-  { value: "joint lock", label: "Joint Lock" },
-  { value: "takedown", label: "Takedown" },
+  { value: "Sweep", label: "Sweep" },
+  { value: "Pass", label: "Pass" },
+  { value: "Choke", label: "Choke" },
+  { value: "Joint Lock", label: "Joint Lock" },
+  { value: "Takedown", label: "Takedown" },
 ];
 
 const positions = [
-  { value: "mount", label: "Full Mount" },
-  { value: "back", label: "Back Mount" },
-  { value: "side control", label: "Side Control" },
-  { value: "full guard", label: "Full Guard" },
-  { value: "half guard", label: "Half Guard" },
-  { value: "seated guard", label: "Seated Guard" },
-  { value: "de la riva", label: "De La Riva" },
-  { value: "reverse de la riva", label: "Reverse De La Riva" },
-  { value: "single leg x", label: "Single Leg X" },
+  { value: "Full Mount", label: "Full Mount" },
+  { value: "Back Mount", label: "Back Mount" },
+  { value: "Side Control", label: "Side Control" },
+  { value: "North South", label: "North South" },
+  { value: "Full Guard", label: "Full Guard" },
+  { value: "Half Guard", label: "Half Guard" },
+  { value: "Seated Guard", label: "Seated Guard" },
+  { value: "De La Riva", label: "De La Riva" },
+  { value: "Reverse De La Riva", label: "Reverse De La Riva" },
+  { value: "Single Leg X", label: "Single Leg X" },
   { value: "X Guard", label: "X Guard" },
-  { value: "turtle", label: "Turtle" },
+  { value: "Turtle", label: "Turtle" },
+  { value: "Standing Up", label: "Standing up" },
 ];
 
 const styles = [
-  { value: "gi", label: "Gi" },
-  { value: "no gi", label: "No Gi" },
-  { value: "wrestling", label: "Wrestling" },
-  { value: "judo", label: "Judo" },
+  { value: "Gi", label: "Gi" },
+  { value: "No Gi", label: "No Gi" },
+  { value: "Wrestling", label: "Wrestling" },
+  { value: "Judo", label: "Judo" },
 ];
 
 export default function Create() {

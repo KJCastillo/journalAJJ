@@ -22,9 +22,11 @@
   .journal-list p {
     color: var(--text-color);
     font-size: 0.9em;
+    margin: 10px 0;
+    display: flex;
   }
   
-  .journal-list .assigned-to {
+  .journal-list .taught-by {
     margin-top: 20px;
     padding-top: 10px;
     border-top: 1px solid #eee;
