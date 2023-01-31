@@ -6,7 +6,7 @@ export default function JournalList({ techniques }) {
     <div className="journal-list">
       {techniques.length === 0 && <p>No Techniques Added</p>}
       {techniques.map(technique => (
-        <div key={technique.id}>{technique.title}</div>
+        <Link to={`/journals/${technique.id}`} key={technique.id}>{technique.title}</Link>
       ))}
     </div>
   );

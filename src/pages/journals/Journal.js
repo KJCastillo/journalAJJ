@@ -18,6 +18,7 @@ export default function Project() {
 
   return (
     <div className="project-details">
+        <p>test test test</p>
       {/* <ProjectSummary project={document}/>
       <ProjectComments project={document}/> */}
     </div>

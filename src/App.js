@@ -8,7 +8,7 @@ import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
 import Dashboard from "./dashboard/Dashboard";
 import Sidebar from "./components/Sidebar";
-//import Journal from './pages/journals/Journal'
+import Journal from './pages/journals/Journal'
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -29,10 +29,10 @@ function App() {
                 path="/create"
                 element={user ? <Create /> : <Navigate to="/login" />}
               />
-              {/* <Route
+              <Route
                 path="/journals/:id"
                 element={user ? <Journal /> : <Navigate to="/login" />}
-              /> */}
+              />
               <Route
                 path="/login"
                 element={user ? <Navigate to="/" /> : <Login />}
