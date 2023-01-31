@@ -1,26 +1,14 @@
 import "./JournalList.css";
+import { Link } from "react-router-dom"
 
-export function JournalList({ journals }) {
+export default function JournalList({ techniques }) {
   return (
     <div className="journal-list">
-      {journals.length === 0 && <p>No projects available</p>}
-      {journals.map(journal => (
-                <>
-                <h4>{journal.title}</h4>
-                <p>{journal.move}</p>
-                <p>{journal.coach}</p>
-                <p>{journal.type}</p>
-                <div className="assigned-to">
-                {/* <ul>
-                    {journal.map(user => (
-                        <li key={user.displayName}>
-                            <p>test</p>
-                        </li>
-                    ))}
-                    </ul> */}
-                </div>
-                </>
-        ))}
+      {techniques.length === 0 && <p>No Techniques Added</p>}
+      {techniques.map(technique => (
+        <div key={technique.id}>{technique.title}</div>
+      ))}
     </div>
   );
 }
+
