@@ -18,17 +18,15 @@ export const useSignup = () => {
         throw new Error("Could not complete signup");
       }
 
-      await updateProfile( auth.currentUser, { displayName });
-     
-      
+      await updateProfile(auth.currentUser, { displayName });
 
-      dispatch({ type: 'LOGIN', payload: res.user })
+      dispatch({ type: "LOGIN", payload: res.user });
 
       setIsPending(false);
       setError(null);
     } catch (err) {
       console.log(err.message);
-      
+
       setError(err.message);
       setIsPending(false);
     }
@@ -37,11 +35,11 @@ export const useSignup = () => {
   return { error, isPending, signup };
 };
 
- // createUserWithEmailAndPassword(auth, email, password)
-    //   .then((res) => {
-    //     dispatch({ type: 'LOGIN', payload: res.user })
-    //   })
-    //   .catch((err) => {
-    //     setError(err.message);
-    //     setIsPending(false)
-    //   });
+// createUserWithEmailAndPassword(auth, email, password)
+//   .then((res) => {
+//     dispatch({ type: 'LOGIN', payload: res.user })
+//   })
+//   .catch((err) => {
+//     setError(err.message);
+//     setIsPending(false)
+//   });
