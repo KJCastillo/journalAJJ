@@ -14,11 +14,12 @@ export default function Project() {
   if (!document) {
     return <div className="loading">Loading...</div>;
   }
+  console.log(document.type)
 
   return (
     <div className="project-details">
       <p>test test test</p>
-      <h1>{document.title}</h1>
+      <h1>{document.type}</h1>
       {/* <ProjectSummary project={document}/>
       <ProjectComments project={document}/> */}
     </div>
