@@ -17,8 +17,12 @@ export default function Project() {
 
   return (
     <div className="project-details">
-      <p>test test test</p>
-      <h1>{document.type}</h1>
+      <h1>{document.title}</h1>
+      <p>{document.technique}</p>
+      <p>{document.coach}</p>
+      <p>{document.position}</p>
+      <p>{document.type}</p>
+      <p>{document.style}</p>
       {/* <ProjectSummary project={document}/>
       <ProjectComments project={document}/> */}
     </div>
