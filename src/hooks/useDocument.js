@@ -7,12 +7,12 @@ export const useDocument = (c, id) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let ref =  doc(db, c, id)
+    let ref = doc(db, c, id);
 
     const unsub = onSnapshot(
       ref,
       (doc) => {
-        if(doc.data()) {
+        if (doc.data()) {
           setDocument({ ...doc.data(), id: doc.id });
           setError(null);
         } else {
