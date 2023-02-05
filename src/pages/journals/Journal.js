@@ -23,8 +23,8 @@ export default function Project() {
       <p>{document.position}</p>
       <p>{document.type}</p>
       <p>{document.style}</p>
-      {/* <ProjectSummary project={document}/>
-      <ProjectComments project={document}/> */}
+      {/* <ProjectSummary technique={document}/>
+      <ProjectComments technique={document}/> */}
     </div>
   );
 }
