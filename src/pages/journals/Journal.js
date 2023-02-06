@@ -17,12 +17,10 @@ export default function Project() {
 
   return (
     <div className="project-details">
-      <h1>{document.title}</h1>
+      <h2>{document.title}</h2>
       <p>{document.technique}</p>
+      <h5>{document.position}</h5> - <h5>{document.type}</h5> - <h5>{document.style}</h5>
       <p>{document.coach}</p>
-      <p>{document.position}</p>
-      <p>{document.type}</p>
-      <p>{document.style}</p>
       {/* <ProjectSummary technique={document}/>
       <ProjectComments technique={document}/> */}
     </div>
