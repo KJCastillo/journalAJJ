@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useDocument } from "../../hooks/useDocument";
 import "./Journal.css";
+import JournalSummary from "./JournalSummary";
 // import ProjectComments from "./ProjectComments";
-// import ProjectSummary from "./ProjectSummary";
 
 export default function Project() {
   const { id } = useParams();
@@ -17,12 +17,8 @@ export default function Project() {
 
   return (
     <div className="project-details">
-      <h2>{document.title}</h2>
-      <p>{document.technique}</p>
-      <h5>{document.position}</h5> - <h5>{document.type}</h5> - <h5>{document.style}</h5>
-      <p>{document.coach}</p>
-      {/* <ProjectSummary technique={document}/>
-      <ProjectComments technique={document}/> */}
+      <JournalSummary techniques={document}/>
+      {/* <ProjectComments technique={document}/> */}
     </div>
   );
 }
