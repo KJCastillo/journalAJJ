@@ -16,7 +16,7 @@ export const useDocument = (c, id) => {
           setDocument({ ...doc.data(), id: doc.id });
           setError(null);
         } else {
-          setError("No document exists");
+          setError("No journal exists");
         }
       },
       (err) => {
