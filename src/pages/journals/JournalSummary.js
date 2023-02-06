@@ -9,7 +9,7 @@ export default function JournalSummary({ techniques }) {
         <h5>
           {techniques.position} - {techniques.type} - {techniques.style}
         </h5>
-        <p className="taught-by">{techniques.coach}</p>
+        <p className="taught-by">Taught by: {techniques.coach}</p>
       </div>
     </div>
   );
