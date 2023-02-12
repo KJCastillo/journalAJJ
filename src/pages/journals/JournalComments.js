@@ -20,7 +20,6 @@ export default function JournalComments({ techniques }) {
       createdAt: Timestamp.now(),
       id: Math.random(),
     };
-    console.log(commentToAdd);
 
     const ref = doc(db, 'technique', techniques.id)
 
@@ -35,6 +34,23 @@ export default function JournalComments({ techniques }) {
   return (
     <div className="journal-comments">
       <h4>Comments</h4>
+
+      <ul>
+        {techniques.comments.length > 0 && techniques.comments.map(comment => (
+          <li key={comment.id}>
+            {/* <div className="comment-author">
+              <p>{comment.displayName}</p>
+            </div> */}
+            <div className="comment-date">
+              <p>date here</p>
+            </div>
+            <div className="comment-content">
+              <p>{comment.content}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
       <form className="add-comment" onSubmit={handleSubmit}>
         <label>
           <span>Add New Comment:</span>
