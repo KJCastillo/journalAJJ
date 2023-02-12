@@ -81,6 +81,7 @@ export default function Create() {
       position: position.value,
       style: style.value,
       createdBy,
+      comments: []
     });
 
     if (!response.error) {
