@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useDocument } from "../../hooks/useDocument";
 import "./Journal.css";
 import JournalSummary from "./JournalSummary";
-// import ProjectComments from "./ProjectComments";
+// import JournalComments from "./JournalComments";
 
 export default function Project() {
   const { id } = useParams();
@@ -18,7 +18,7 @@ export default function Project() {
   return (
     <div className="project-details">
       <JournalSummary techniques={document}/>
-      {/* <ProjectComments technique={document}/> */}
+      {/* <JournalComments techniques={document}/> */}
     </div>
   );
 }
