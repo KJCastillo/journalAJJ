@@ -17,8 +17,8 @@ export default function Project() {
 
   return (
     <div className="journal-details">
-      <JournalSummary techniques={document}/>
-      <JournalComments techniques={document}/>
+      <JournalSummary techniques={document} />
+      <JournalComments techniques={document} />
     </div>
   );
 }
