@@ -4,6 +4,9 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function JournalList({ techniques }) {
   const { user } = useAuthContext();
+  
+  console.log(user.uid)
+  console.log(techniques)
 
   return (
     <div className="journal-list">
