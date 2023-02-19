@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function JournalList({ techniques }) {
-  const { user } = useAuthContext();
+  // const { user } = useAuthContext();
   
-  console.log(user.uid)
-  console.log(techniques)
+  // console.log(user.uid)
+  // console.log(techniques)
 
   return (
     <div className="journal-list">

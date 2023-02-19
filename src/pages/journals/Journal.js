@@ -7,7 +7,7 @@ import JournalComments from "./JournalComments";
 export default function Project() {
   const { id } = useParams();
   const { document, error } = useDocument("technique", id);
-
+  
   if (error) {
     return <div className="error">{error}</div>;
   }
