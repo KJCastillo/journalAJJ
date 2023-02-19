@@ -1,8 +1,8 @@
 import "./JournalList.css";
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../../hooks/useAuthContext";
+//import { useAuthContext } from "../../hooks/useAuthContext";
 
-export default function JournalList({ techniques }) {
+export default function JournalList({ techniques, uid }) {
   // const { user } = useAuthContext();
   
   // console.log(user.uid)
@@ -17,7 +17,6 @@ export default function JournalList({ techniques }) {
       {techniques.map((technique) => (
         <Link to={`/journals/${technique.id}`} key={technique.id}>
           <h4>{technique.title}</h4>
-          {/* <p>{technique.technique}</p> */}
           <h5>
             {technique.position} - {technique.type} - {technique.style}
           </h5>
