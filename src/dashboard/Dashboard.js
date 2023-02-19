@@ -5,9 +5,12 @@ import "./Dashboard.css";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Dashboard() {
-  const { document, error } = useCollection("technique");
   const { user } = useAuthContext()
-  console.log(user.uid)
+  const { document, error } = useCollection(
+    "technique",
+    ['uid', '==', user.uid]
+    );
+    //console.log(user)
 
   return (
     <div>

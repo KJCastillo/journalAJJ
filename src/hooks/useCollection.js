@@ -1,23 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { db } from "../firebase/config";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, where, query } from "firebase/firestore";
 
-export const useCollection = (c) => {
+export const useCollection = (c, _q) => {
   const [document, setDocument] = useState(null);
   const [error, setError] = useState(null);
+  const q = useRef(_q).current;
+  //useRef to stop infinite loop in useEffect
+  //_q is an array and it is 'different' in every function call
 
   useEffect(() => {
     let ref = collection(db, c);
 
     const unsub = onSnapshot(
       ref,
+      query(ref, where(...q)),
       (snapshot) => {
         let results = [];
         snapshot.docs.forEach((doc) => {
           results.push({ id: doc.id, ...doc.data() });
         });
         setDocument(results);
-
         setError(null);
       },
       (error) => {
@@ -26,7 +29,7 @@ export const useCollection = (c) => {
       }
     );
     return () => unsub();
-  }, [c]);
+  }, [c, q]);
 
   return { document, error };
 };
