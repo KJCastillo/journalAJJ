@@ -9,7 +9,7 @@ export const useCollection = (c, _q) => {
   //useRef to stop infinite loop in useEffect
   //_q is an array and it is 'different' in every function call
 
-  console.log(q);
+  //console.log(q);
 
   useEffect(() => {
     let ref = collection(db, c);
