@@ -11,7 +11,7 @@ export default function JournalSummary({ techniques }) {
   const handleClick = (e) => {
     e.preventDefault();
     deleteDoc(doc(db, 'technique', techniques.id))
-    //navigate("/")
+    navigate("/")
   }
 
   console.log(techniques.id)
