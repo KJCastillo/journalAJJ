@@ -11,6 +11,7 @@ export default function JournalSummary({ techniques }) {
         </h5>
         <p className="taught-by">Taught by: {techniques.coach}</p>
       </div>
+      <button className="btn">Remove</button>
     </div>
   );
 }
