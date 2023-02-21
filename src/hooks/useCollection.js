@@ -9,13 +9,16 @@ export const useCollection = (c, _q) => {
   //useRef to stop infinite loop in useEffect
   //_q is an array and it is 'different' in every function call
 
-  //console.log(q);
 
   useEffect(() => {
     let ref = collection(db, c);
 
+    // if (q) {
+    //   ref = query(ref, where(...q));
+    // }
+
     if (q) {
-      ref = query(ref, where(...q));
+     query(ref, where(...q));
     }
 
     const unsub = onSnapshot(
@@ -25,6 +28,7 @@ export const useCollection = (c, _q) => {
         snapshot.docs.forEach((doc) => {
           results.push({ id: doc.id, ...doc.data() });
         });
+        console.log('snapshot size is:', snapshot.size)
         setDocument(results);
         setError(null);
       },
