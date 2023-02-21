@@ -10,13 +10,12 @@ export default function Dashboard() {
     "technique",
     ['uid', '==', user.uid]
     );
-    //console.log(user)
 
   return (
     <div>
       <h2 className="page-title">Dashboard</h2>
       {error && <p className="error">{error}</p>}
-      {document && <JournalList techniques={document} uid={user.uid}/>}
+      {document && <JournalList techniques={document} />}
     </div>
   );
 }
