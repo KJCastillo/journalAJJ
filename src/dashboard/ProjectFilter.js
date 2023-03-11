@@ -27,10 +27,11 @@ export default function ProjectFilter() {
   };
 
   return (
-    <div className="project-filter">
+    <div className="journal-filter">
       <nav>
+        <p>Filter by:</p>
         {filterListPosition.map((f) => (
-          <button key={f} onClick={() => handleClick(f)}>
+          <button key={f} onClick={() => handleClick(f)} className={currentFilter === f ? 'active' : ''}>
             {f}
           </button>
         ))}
