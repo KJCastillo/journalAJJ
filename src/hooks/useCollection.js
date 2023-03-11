@@ -17,6 +17,8 @@ export const useCollection = (c, _q) => {
     //   ref = query(ref, where(...q));
     // }
 
+    //QUERTY NOT WORKING
+
     if (q) {
      query(ref, where(...q));
     }
