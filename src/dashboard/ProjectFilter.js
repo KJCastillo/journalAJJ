@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Dashboard.css";
 
 const filterListPosition = [
@@ -18,12 +17,10 @@ const filterListPosition = [
   "Standing Up",
 ];
 
-export default function ProjectFilter() {
-  const [currentFilter, setCurrentFilter] = useState("All");
-
+export default function ProjectFilter({ currentFilter, changeFilter }) {
   const handleClick = (newFilter) => {
     console.log(newFilter);
-    setCurrentFilter(newFilter)
+    changeFilter(newFilter);
   };
 
   return (
@@ -31,7 +28,11 @@ export default function ProjectFilter() {
       <nav>
         <p>Filter by:</p>
         {filterListPosition.map((f) => (
-          <button key={f} onClick={() => handleClick(f)} className={currentFilter === f ? 'active' : ''}>
+          <button
+            key={f}
+            onClick={() => handleClick(f)}
+            className={currentFilter === f ? "active" : ""}
+          >
             {f}
           </button>
         ))}
