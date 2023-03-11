@@ -20,6 +20,30 @@ export default function Dashboard() {
   };
   //change filter here, to set new filter and show it on journal list below
 
+  const journals = document ? document.filter(document => {
+    switch(currentFilter) {
+      case 'All':
+        return true
+      case "Full Mount":
+      case  "Back Mount":
+      case "Side Control":
+      case  "North South":
+      case  "Full Guard":
+      case  "Half Guard":
+      case  "Seated Guard":
+      case "De La Riva":
+      case  "Reverse De La Riva":
+      case  "Single Leg X":
+      case  "X Guard":
+      case   "Turtle":
+      case  "Standing Up":
+        console.log(document.position, currentFilter)
+        return document.position === currentFilter
+        default:
+          return true
+    }
+  }) : null
+
   return (
     <div>
       <h2 className="page-title">Dashboard</h2>
@@ -30,7 +54,7 @@ export default function Dashboard() {
           changeFilter={changeFilter}
         />
       )}
-      {document && <JournalList techniques={document} />}
+      {journals && <JournalList techniques={journals} />}
     </div>
   );
 }
